@@ -44,8 +44,6 @@ typedef struct
     //idMascota(debe existir) validar
     //idServisio (debe existir) validar
     int fecha;
-
-
 }eTrabajo;
 
 char mostrarMenu();
@@ -70,6 +68,7 @@ int pedirEdadMascota();
 void pedirMascota(int tam,int id,char string[],int edad);
 
 float pedirPrecio();
+void pedirServicio();
 
 int main()
 {
@@ -83,6 +82,7 @@ int main()
     eColor color[TAM];
     eMascota mascota[TAM];
     eServicio servicio[TAM];
+    eTrabajo trabajo[TAM];//Aqui me he quedado...
 
     do
     {
@@ -100,10 +100,7 @@ int main()
 
                 pedirMascota(TAM,mascota[i].id,mascota[i].nombre,mascota[i].edad);
 
-                servicio[i].id=pedirId();
-                validarId(servicio[i].id,20000,"Error! El id ingresode esta por debajo del 20000");
-                pedirDescripcion(servicio[i].descripcion);
-                servicio[i].precio=pedirPrecio();
+                pedirServicio(TAM,servicio[i].id,servicio[i].descripcion,servicio[i].precio);
 
 
 
@@ -416,5 +413,17 @@ float pedirPrecio()
     return precioIngresado;
 }//Falta modificar...
 
+void pedirServicio(int tam,int id,char descricion,float precio)
+{
+    for(int i=0;i<tam;i++)
+    {
+        id=pedirId();
+        validarId(id,20000,"Error! El id ingresode esta por debajo del 20000");
+        pedirDescripcion(descricion);
+        precio=pedirPrecio();
+    }
+
+    return void;
+}
 
 
